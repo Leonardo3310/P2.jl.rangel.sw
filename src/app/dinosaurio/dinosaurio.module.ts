@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DinosaurioComponent } from './dinosaurio.component';
+import { DinosaurioDetailComponent } from './dinosaurio-detail/dinosaurio-detail.component';
+import { DinosaurioListComponent } from './dinosaurio-list/dinosaurio-list.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [DinosaurioComponent]
-})
-export class DinosaurioModule { }
+  exports: [DinosaurioListComponent],
+  declarations: [DinosaurioListComponent, DinosaurioDetailComponent]
+ })
+ export class BookModule { }
