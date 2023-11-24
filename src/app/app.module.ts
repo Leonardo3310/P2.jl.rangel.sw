@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DinosaurioComponent } from './dinosaurio/dinosaurio.component';
-import { Dinosauri
+import { DinosaurioModule } from './dinosaurio/dinosaurio.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +13,8 @@ import { Dinosauri
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DinosaurioModule,
-    HttpClientModule
+    HttpClientModule,
+    DinosaurioModule
   ],
   providers: [
     provideClientHydration()

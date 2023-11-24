@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DinosaurioDetail } from './dinosaurio-detail';
+import { DinosaurioService } from '../dinosaurio.service';
 
 @Component({
   selector: 'app-dinosaurio-detail',
   templateUrl: './dinosaurio-detail.component.html',
-  styleUrls: ['./dinosaurio-detail.component.css']
+  styleUrls: []
 })
-export class DinosaurioDetailComponent implements OnInit {
+export class AuthorDetailComponent implements OnInit {
 
-  constructor() { }
+  dinoId!: string;
+  @Input() dinosaurioDetail!: DinosaurioDetail;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private dinosaurioService: DinosaurioService
+  ) {}
+
+  getDinosaurio(){
+    this.dinosaurioService.getDinosaurios(this.dinoId).subscribe(apiData=>{
+      this.dinosaurioDetail = apiData;
+    })
   }
 
+  ngOnInit() {
+    if(this.dinosaurioDetail === undefined){
+      this.dinoId = this.route.snapshot.paramMap.get('id')!
+      if (this.dinoId) {
+        this.getDinosaurio();
+      }
+    }
+  }
 }
